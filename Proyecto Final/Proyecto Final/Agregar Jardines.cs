@@ -15,6 +15,16 @@ namespace Proyecto_Final
         public Agregar_Jardines()
         {
             InitializeComponent();
+
+            btn_Agregar.Enabled = true;
+            btn_Foto.Enabled = false;
+            btn_Guardar.Enabled = false;
+            btn_Eliminar.Enabled = false;
+            btn_Modificar.Enabled = false;
+            btn_Cancelar.Enabled = false;
+
+            gb_jardines.Enabled = false;
+            dgv_jardines.ReadOnly = true;
         }
         int m, mx, my;
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -137,6 +147,46 @@ namespace Proyecto_Final
         private void tbx_Longitud_Del_Jardin_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            btn_Agregar.Enabled = true;
+            btn_Foto.Enabled = false;
+            btn_Guardar.Enabled = false;
+            btn_Eliminar.Enabled = true;
+            btn_Modificar.Enabled = true;
+            btn_Cancelar.Enabled = false;
+
+            gb_jardines.Enabled = false;
+
+        }
+
+        private void btn_Agregar_Click(object sender, EventArgs e)
+        {
+            btn_Agregar.Enabled = false;
+            btn_Foto.Enabled = true;
+            btn_Guardar.Enabled = true;
+            btn_Eliminar.Enabled = true;
+            btn_Modificar.Enabled = true;
+            btn_Cancelar.Enabled = true;
+
+            gb_jardines.Enabled = true;
+            dgv_jardines.ReadOnly = false;
+        }
+
+        private void btn_Guardar_Click(object sender, EventArgs e)
+        {
+            btn_Agregar.Enabled = true;
+            btn_Foto.Enabled = false;
+            btn_Guardar.Enabled = false;
+            btn_Eliminar.Enabled = true;
+            btn_Modificar.Enabled = true;
+            btn_Cancelar.Enabled = false;
+
+            dgv_jardines.ReadOnly = false;
+
+            MessageBox.Show("El jardín ha sido agregado exitosamente");
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)

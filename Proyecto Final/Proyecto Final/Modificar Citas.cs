@@ -15,6 +15,17 @@ namespace Proyecto_Final
         public Modificar_Citas()
         {
             InitializeComponent();
+
+            btn_Crear.Enabled = true;
+            btn_Guardar.Enabled = false;
+            btn_Eliminar.Enabled = false;
+            btn_Modificar.Enabled = false;
+            btn_Cancelar.Enabled = false;
+
+            gbx_Panel_Modificar_Citas.Enabled = false;
+            //Tambien se le podría colocar con ReadOnly
+            dgv_Disponibles.Enabled = false;
+            dgv_No_Disponibles.Enabled = false;
         }
         int m, mx, my;//variables que permiten el movimiento del form
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -123,6 +134,48 @@ namespace Proyecto_Final
         private void Modificar_Citas_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            btn_Crear.Enabled = true;
+            btn_Guardar.Enabled = false;
+            btn_Eliminar.Enabled = true;
+            btn_Modificar.Enabled = true;
+            btn_Cancelar.Enabled = false;
+
+            gbx_Panel_Modificar_Citas.Enabled = false;
+            dgv_Disponibles.Enabled = false;
+            dgv_No_Disponibles.Enabled = false;
+
+        }
+
+        private void btn_Crear_Click(object sender, EventArgs e)
+        {
+            btn_Crear.Enabled = false;
+            btn_Guardar.Enabled = true;
+            btn_Eliminar.Enabled = true;
+            btn_Modificar.Enabled = true;
+            btn_Cancelar.Enabled = true;
+
+            gbx_Panel_Modificar_Citas.Enabled = true;
+            dgv_Disponibles.Enabled = true;
+            dgv_No_Disponibles.Enabled = true;
+        }
+
+        private void btn_Guardar_Click(object sender, EventArgs e)
+        {
+            btn_Crear.Enabled = true;
+            btn_Guardar.Enabled = false;
+            btn_Eliminar.Enabled = true;
+            btn_Modificar.Enabled = true;
+            btn_Cancelar.Enabled = false;
+
+            gbx_Panel_Modificar_Citas.Enabled = false;
+            dgv_Disponibles.Enabled = false;
+            dgv_No_Disponibles.Enabled = false;
+
+            MessageBox.Show("La cita ha sido registrada exitosamente");
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)

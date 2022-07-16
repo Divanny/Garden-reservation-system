@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
 
 namespace Proyecto_Final
 {
@@ -19,14 +19,14 @@ namespace Proyecto_Final
         }
         int m, mx, my;
 
-        #region Conexión Base de Datos
-        public static MySqlConnection ObtenerConexion()
-        {
-            MySqlConnection conectar = new MySqlConnection("server = 127.0.0.1; database = jardines; Uid = root; pwd = 1234;");
-            conectar.Open();
-            return conectar;
-        }
-        #endregion
+        //#region Conexión Base de Datos
+        //public static MySqlConnection ObtenerConexion()
+        //{
+        //    MySqlConnection conectar = new MySqlConnection("server = 127.0.0.1; database = jardines; Uid = root; pwd = 1234;");
+        //    conectar.Open();
+        //    return conectar;
+        //}
+        //#endregion
 
         private void tbx_Usuario_TextChanged(object sender, EventArgs e)
         {
@@ -217,23 +217,23 @@ namespace Proyecto_Final
                 string pregunta_seguridad = tbx_Pregunta_De_Seguridad.Text;
                 string rol = "U";
                 
-                #region Almacenamiento de voto
-                try
-                {
-                    MySqlConnection conexion = ObtenerConexion();
-                    MySqlCommand comando = new MySqlCommand(String.Format("insert into usuario (nombre, apellido, username, correo, contraseña, fecha_nacimiento, fecha_registro, pregunta_seguridad, rol) values ('" + nombre + "', '" + apellido + "', '" + username + "', '" + correo + "', '" + contraseña + "', '" + fecha_de_nacimiento + "', '" + fecha_de_registro + "', '" + pregunta_seguridad + "', '" + rol + "');"), conexion);
-                    comando.ExecuteNonQuery();
-                    conexion.Close();
-                    MessageBox.Show("Usuario registrado correctamente.");
-                    Form login = new LogIn();
-                    login.Show();
-                    this.Hide();
-                }
-                catch
-                {
-                    MessageBox.Show("Error");
-                }
-                #endregion
+                //#region Almacenamiento de voto
+                //try
+                //{
+                //    MySqlConnection conexion = ObtenerConexion();
+                //    MySqlCommand comando = new MySqlCommand(String.Format("insert into usuario (nombre, apellido, username, correo, contraseña, fecha_nacimiento, fecha_registro, pregunta_seguridad, rol) values ('" + nombre + "', '" + apellido + "', '" + username + "', '" + correo + "', '" + contraseña + "', '" + fecha_de_nacimiento + "', '" + fecha_de_registro + "', '" + pregunta_seguridad + "', '" + rol + "');"), conexion);
+                //    comando.ExecuteNonQuery();
+                //    conexion.Close();
+                //    MessageBox.Show("Usuario registrado correctamente.");
+                //    Form login = new LogIn();
+                //    login.Show();
+                //    this.Hide();
+                //}
+                //catch
+                //{
+                //    MessageBox.Show("Error");
+                //}
+                //#endregion
             }
             else
             {
