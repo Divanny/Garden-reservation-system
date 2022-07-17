@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace Proyecto_Final
 {
-    public partial class Cliente : Form
+    public partial class Reservar : Form
     {
-        public Cliente()
+        int id;
+        string nombre, apellido;
+        public Reservar(int ID, string Nombre, string Apellido)
         {
+            id = ID;
+            nombre = Nombre;
+            apellido = Apellido;
             InitializeComponent();
+            lbl_bienvenido.Text += Nombre + " " + Apellido;
         }
         int m, mx, my;
         private void pictureBox5_Click(object sender, EventArgs e)
@@ -57,6 +63,29 @@ namespace Proyecto_Final
         {
             var reservar = new Hacer_Reserva();
             reservar.Show();
+            this.Hide();
+        }
+
+        private void pictureBox12_Click(object sender, EventArgs e)
+        {
+            var login = new LogIn();
+            login.Show();
+            this.Hide();
+        }
+
+        private void pictureBox10_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox11_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Reservar_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -68,6 +97,7 @@ namespace Proyecto_Final
         {
             var openReservaciones = new Ver_Reservaciones();
             openReservaciones.Show();
+            this.Hide();
         }
     }
 }

@@ -12,9 +12,15 @@ namespace Proyecto_Final
 {
     public partial class Administrador : Form
     {
-        public Administrador()
+        int id;
+        string nombre, apellido;
+        public Administrador(int ID, string Nombre, string Apellido)
         {
+            int id = ID;
+            string nombre = Nombre;
+            string apellido = Apellido;
             InitializeComponent();
+            lbl_bienvenido.Text += Nombre + " " + Apellido;
         }
 
         int m, mx, my;
@@ -40,8 +46,9 @@ namespace Proyecto_Final
 
         private void btn_Agregar_Jardin_Click(object sender, EventArgs e)
         {
-            var OpenAgregarJardines = new Agregar_Jardines();
-            OpenAgregarJardines.ShowDialog();
+            var OpenAgregarJardines = new Agregar_Jardines(id, nombre, apellido);
+            OpenAgregarJardines.Show();
+            this.Hide();
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
@@ -96,6 +103,18 @@ namespace Proyecto_Final
             var openVerDIsponibilidad = new Ver_Disponibilidad();
             openVerDIsponibilidad.Show();
 
+        }
+
+        private void Administrador_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox12_Click(object sender, EventArgs e)
+        {
+            Form login = new LogIn();
+            login.Show();
+            this.Hide();
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)

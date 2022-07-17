@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 
 namespace Proyecto_Final
 {
@@ -19,21 +19,14 @@ namespace Proyecto_Final
         }
         int m,mx,my;//variables que permiten el movimiento del form
 
-        //#region Conexión Base de Datos
-        //public static MySqlConnection ObtenerConexion()
-        //{
-        //    MySqlConnection conectar = new MySqlConnection("server = 127.0.0.1; database = jardines; Uid = root; pwd = 1234;");
-        //    conectar.Open();
-        //    return conectar;
-        //}
-        //#endregion
-
-        //private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        //{
-        //    var actualizar_contraseña = new Olvidar_Contraseña();
-        //    actualizar_contraseña.Show();
-        //    this.Hide();
-        //}
+        #region Conexión Base de Datos
+        public static MySqlConnection ObtenerConexion()
+        {
+            MySqlConnection conectar = new MySqlConnection("server = 127.0.0.1; database = jardines; Uid = root; pwd = 1234;");
+            conectar.Open();
+            return conectar;
+        }
+        #endregion
 
         private void tbx_Usuario_Enter(object sender, EventArgs e)
         {
@@ -96,6 +89,7 @@ namespace Proyecto_Final
         {
             var openregistro = new Registro();
             openregistro.Show();
+            this.Hide();
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -105,42 +99,43 @@ namespace Proyecto_Final
 
         private void Btn_Acceder_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    MySqlConnection conexion = ObtenerConexion();
-            //    MySqlCommand comando = new MySqlCommand(String.Format("select username, contraseña, rol from usuario where username = '" + tbx_Usuario.Text +"' AND contraseña = '" + tbx_Contraseña.Text +"';"), conexion);
-            //    MySqlDataReader reader = comando.ExecuteReader();
-            //    int Length = 0;
-            //    string Nombre, Apellido, Rol = "U";
+            try
+            {
+                MySqlConnection conexion = ObtenerConexion();
+                MySqlCommand comando = new MySqlCommand(String.Format("select id, nombre, apellido, username, contraseña, rol from usuario where username = '" + tbx_Usuario.Text + "' AND contraseña = '" + tbx_Contraseña.Text + "';"), conexion);
+                MySqlDataReader reader = comando.ExecuteReader();
+                int Length = 0, ID = -1;
+                string Username = "", Contraseña = "", Nombre = "", Apellido = "", Rol = "U";
 
-            //    while (reader.Read())
-            //    {
-            //        Nombre = reader.GetString(0);
-            //        Apellido = reader.GetString(1);
-            //        Rol = reader.GetString(2);
-            //        Length++;
-            //    }
-            //    conexion.Close();
-            //    if (Rol == "A")
-            //    {
-            //        var admintest = new Administrador();
-            //        admintest.Show();
-            //        this.Hide();
-            //    }
-            //    else
-            //    {
-            //        var admintest = new Cliente();
-            //        admintest.Show();
-            //        this.Hide();
-            //    }
-                
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Usuario y/o contraseña inválidos.");
-            //}
+                while (reader.Read())
+                {
+                    ID = reader.GetInt32(0);
+                    Nombre = reader.GetString(1);
+                    Apellido = reader.GetString(2);
+                    Username = reader.GetString(3);
+                    Contraseña = reader.GetString(4);
+                    Rol = reader.GetString(5);
+                    Length++;
+                }
+                conexion.Close();
+                if (Rol == "A")
+                {
+                    var admintest = new Administrador(ID, Nombre, Apellido);
+                    admintest.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    var cliente = new Reservar(ID, Nombre, Apellido);
+                    cliente.Show();
+                    this.Hide();
+                }
 
-            // select username, contraseña, rol from usuario where username = "E1000" AND contraseña = "admin12345";
+            }
+            catch
+            {
+                MessageBox.Show("Usuario y/o contraseña inválidos.");
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -201,10 +196,11 @@ namespace Proyecto_Final
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var openadmin = new Administrador();
-            openadmin.ShowDialog();
+            var actualizar_contraseña = new Olvidar_Contraseña();
+            actualizar_contraseña.Show();
+            this.Hide();
         }
 
         private void pictureBox3_MouseMove_1(object sender, MouseEventArgs e)

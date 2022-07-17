@@ -145,60 +145,6 @@ namespace Proyecto_Final
 
         }
 
-        private void tbx_Nombre_Del_Jardin_Enter(object sender, EventArgs e)
-        {
-            if (tbx_Nombre_Del_Jardin.Text == "Nombre del Jardin")
-            {
-                tbx_Nombre_Del_Jardin.Text = "";
-                tbx_Nombre_Del_Jardin.ForeColor = Color.White;
-            }
-        }
-
-        private void tbx_Nombre_Del_Jardin_Leave(object sender, EventArgs e)
-        {
-            if (tbx_Nombre_Del_Jardin.Text == "")
-            {
-                tbx_Nombre_Del_Jardin.Text = "Nombre del Jardin";
-                tbx_Nombre_Del_Jardin.ForeColor = Color.White;
-            }
-        }
-
-        private void tbx_Longitud_Del_Jardin_Enter(object sender, EventArgs e)
-        {
-            if (tbx_Longitud_Del_Jardin.Text == "Longitud del Jardin")
-            {
-                tbx_Longitud_Del_Jardin.Text = "";
-                tbx_Longitud_Del_Jardin.ForeColor = Color.White;
-            }
-        }
-
-        private void tbx_Longitud_Del_Jardin_Leave(object sender, EventArgs e)
-        {
-            if (tbx_Longitud_Del_Jardin.Text == "")
-            {
-                tbx_Longitud_Del_Jardin.Text = "Longitud del Jardin";
-                tbx_Longitud_Del_Jardin.ForeColor = Color.White;
-            }
-        }
-
-        private void tbx_Descripcion_Del_Jardin_Enter(object sender, EventArgs e)
-        {
-            if (tbx_Descripcion_Del_Jardin.Text == "Descripcion del Jardin")
-            {
-                tbx_Descripcion_Del_Jardin.Text = "";
-                tbx_Descripcion_Del_Jardin.ForeColor = Color.White;
-            }
-        }
-
-        private void tbx_Descripcion_Del_Jardin_Leave(object sender, EventArgs e)
-        {
-            if (tbx_Descripcion_Del_Jardin.Text == "")
-            {
-                tbx_Descripcion_Del_Jardin.Text = "Descripcion del Jardin";
-                tbx_Descripcion_Del_Jardin.ForeColor = Color.White;
-            }
-        }
-
         private void label7_Click(object sender, EventArgs e)
         {
 

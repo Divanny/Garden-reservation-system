@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Huan_\\Desktop\\Proyecto-Final-Desarrollo-de-Software-II\\Proyecto Final\\Proyecto Final\\Proyecto Final.csproj": {}
+    "D:\\OneDrive - INTEC\\Proyecto Final\\Proyecto-Final-Desarrollo-de-Software-II\\Proyecto Final\\Proyecto Final\\Proyecto Final.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Huan_\\Desktop\\Proyecto-Final-Desarrollo-de-Software-II\\Proyecto Final\\Proyecto Final\\Proyecto Final.csproj": {
+    "D:\\OneDrive - INTEC\\Proyecto Final\\Proyecto-Final-Desarrollo-de-Software-II\\Proyecto Final\\Proyecto Final\\Proyecto Final.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Huan_\\Desktop\\Proyecto-Final-Desarrollo-de-Software-II\\Proyecto Final\\Proyecto Final\\Proyecto Final.csproj",
+        "projectUniqueName": "D:\\OneDrive - INTEC\\Proyecto Final\\Proyecto-Final-Desarrollo-de-Software-II\\Proyecto Final\\Proyecto Final\\Proyecto Final.csproj",
         "projectName": "Proyecto Final",
-        "projectPath": "C:\\Users\\Huan_\\Desktop\\Proyecto-Final-Desarrollo-de-Software-II\\Proyecto Final\\Proyecto Final\\Proyecto Final.csproj",
-        "packagesPath": "C:\\Users\\Huan_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Huan_\\Desktop\\Proyecto-Final-Desarrollo-de-Software-II\\Proyecto Final\\Proyecto Final\\obj\\",
+        "projectPath": "D:\\OneDrive - INTEC\\Proyecto Final\\Proyecto-Final-Desarrollo-de-Software-II\\Proyecto Final\\Proyecto Final\\Proyecto Final.csproj",
+        "packagesPath": "C:\\Users\\divan\\.nuget\\packages\\",
+        "outputPath": "D:\\OneDrive - INTEC\\Proyecto Final\\Proyecto-Final-Desarrollo-de-Software-II\\Proyecto Final\\Proyecto Final\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Program Files\\Visual Studio\\Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Huan_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\divan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packagesource": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
@@ -61,7 +62,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

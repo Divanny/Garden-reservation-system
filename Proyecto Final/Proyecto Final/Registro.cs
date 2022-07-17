@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 
 namespace Proyecto_Final
 {
@@ -19,14 +19,14 @@ namespace Proyecto_Final
         }
         int m, mx, my;
 
-        //#region Conexión Base de Datos
-        //public static MySqlConnection ObtenerConexion()
-        //{
-        //    MySqlConnection conectar = new MySqlConnection("server = 127.0.0.1; database = jardines; Uid = root; pwd = 1234;");
-        //    conectar.Open();
-        //    return conectar;
-        //}
-        //#endregion
+        #region Conexión Base de Datos
+        public static MySqlConnection ObtenerConexion()
+        {
+            MySqlConnection conectar = new MySqlConnection("server = 127.0.0.1; database = jardines; Uid = root; pwd = 1234;");
+            conectar.Open();
+            return conectar;
+        }
+        #endregion
 
         private void tbx_Usuario_TextChanged(object sender, EventArgs e)
         {
@@ -56,7 +56,7 @@ namespace Proyecto_Final
             if (tbx_Nombre.Text == "Nombre")
             {
                 tbx_Nombre.Text = "";
-                tbx_Nombre.ForeColor = Color.White;
+                tbx_Nombre.ForeColor = Color.Black;
             }
         }
 
@@ -65,7 +65,7 @@ namespace Proyecto_Final
             if (tbx_Nombre.Text == "")
             {
                 tbx_Nombre.Text = "Nombre";
-                tbx_Nombre.ForeColor = Color.White;
+                tbx_Nombre.ForeColor = Color.Black;
             }
         }
 
@@ -74,7 +74,7 @@ namespace Proyecto_Final
             if (tbx_Apellido.Text == "Apellido")
             {
                 tbx_Apellido.Text = "";
-                tbx_Apellido.ForeColor = Color.White;
+                tbx_Apellido.ForeColor = Color.Black;
             }
         }
 
@@ -83,7 +83,7 @@ namespace Proyecto_Final
             if (tbx_Apellido.Text == "")
             {
                 tbx_Apellido.Text = "Apellido";
-                tbx_Apellido.ForeColor = Color.White;
+                tbx_Apellido.ForeColor = Color.Black;
             }
         }
 
@@ -94,7 +94,7 @@ namespace Proyecto_Final
             if (tbx_Usuario.Text == "Nombre de Usuario")
             {
                 tbx_Usuario.Text = "";
-                tbx_Usuario.ForeColor = Color.White;
+                tbx_Usuario.ForeColor = Color.Black;
                 
             }
         }
@@ -104,7 +104,7 @@ namespace Proyecto_Final
             if (tbx_Usuario.Text == "")
             {
                 tbx_Usuario.Text = "Nombre de Usuario";
-                tbx_Usuario.ForeColor = Color.White;
+                tbx_Usuario.ForeColor = Color.Black;
 
             }
         }
@@ -114,7 +114,7 @@ namespace Proyecto_Final
             if (tbx_Contraseña.Text == "Contraseña")
             {
                 tbx_Contraseña.Text = "";
-                tbx_Contraseña.ForeColor = Color.White;
+                tbx_Contraseña.ForeColor = Color.Black;
 
             }
         }
@@ -124,7 +124,7 @@ namespace Proyecto_Final
             if (tbx_Contraseña.Text == "")
             {
                 tbx_Contraseña.Text = "Contraseña";
-                tbx_Contraseña.ForeColor = Color.White;
+                tbx_Contraseña.ForeColor = Color.Black;
 
             }
         }
@@ -134,7 +134,7 @@ namespace Proyecto_Final
             if (tbx_Confirmar_Contraseña.Text == "Confirmar Contraseña")
             {
                 tbx_Confirmar_Contraseña.Text = "";
-                tbx_Confirmar_Contraseña.ForeColor = Color.White;
+                tbx_Confirmar_Contraseña.ForeColor = Color.Black;
 
             }
         }
@@ -143,7 +143,7 @@ namespace Proyecto_Final
             if (tbx_Confirmar_Contraseña.Text == "")
             {
                 tbx_Confirmar_Contraseña.Text = "Confirmar Contraseña";
-                tbx_Confirmar_Contraseña.ForeColor = Color.White;
+                tbx_Confirmar_Contraseña.ForeColor = Color.Black;
 
             }
         }
@@ -153,7 +153,7 @@ namespace Proyecto_Final
             if (tbx_Correo_Electronico.Text == "Correo Electronico")
             {
                 tbx_Correo_Electronico.Text = "";
-                tbx_Correo_Electronico.ForeColor = Color.White;
+                tbx_Correo_Electronico.ForeColor = Color.Black;
 
             }
         }
@@ -163,7 +163,7 @@ namespace Proyecto_Final
             if (tbx_Correo_Electronico.Text == "")
             {
                 tbx_Correo_Electronico.Text = "Correo Electronico";
-                tbx_Correo_Electronico.ForeColor = Color.White;
+                tbx_Correo_Electronico.ForeColor = Color.Black;
 
             }
         }
@@ -179,7 +179,7 @@ namespace Proyecto_Final
             if (tbx_Pregunta_De_Seguridad.Text == "¿Cómo apodarías a tu mascota?")
             {
                 tbx_Pregunta_De_Seguridad.Text = "";
-                tbx_Pregunta_De_Seguridad.ForeColor = Color.White;
+                tbx_Pregunta_De_Seguridad.ForeColor = Color.Black;
 
             }
         }
@@ -189,7 +189,7 @@ namespace Proyecto_Final
             if (tbx_Pregunta_De_Seguridad.Text == "")
             {
                 tbx_Pregunta_De_Seguridad.Text = "¿Cómo apodarías a tu mascota?";
-                tbx_Pregunta_De_Seguridad.ForeColor = Color.White;
+                tbx_Pregunta_De_Seguridad.ForeColor = Color.Black;
 
             }
         }
@@ -216,29 +216,36 @@ namespace Proyecto_Final
                 string fecha_de_registro = año + "-" + mes + "-" + dia + " " + hora + ":" + minuto + ":" + segundo;
                 string pregunta_seguridad = tbx_Pregunta_De_Seguridad.Text;
                 string rol = "U";
-                
-                //#region Almacenamiento de voto
-                //try
-                //{
-                //    MySqlConnection conexion = ObtenerConexion();
-                //    MySqlCommand comando = new MySqlCommand(String.Format("insert into usuario (nombre, apellido, username, correo, contraseña, fecha_nacimiento, fecha_registro, pregunta_seguridad, rol) values ('" + nombre + "', '" + apellido + "', '" + username + "', '" + correo + "', '" + contraseña + "', '" + fecha_de_nacimiento + "', '" + fecha_de_registro + "', '" + pregunta_seguridad + "', '" + rol + "');"), conexion);
-                //    comando.ExecuteNonQuery();
-                //    conexion.Close();
-                //    MessageBox.Show("Usuario registrado correctamente.");
-                //    Form login = new LogIn();
-                //    login.Show();
-                //    this.Hide();
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Error");
-                //}
-                //#endregion
+
+                #region Almacenamiento de voto
+                try
+                {
+                    MySqlConnection conexion = ObtenerConexion();
+                    MySqlCommand comando = new MySqlCommand(String.Format("insert into usuario (nombre, apellido, username, correo, contraseña, fecha_nacimiento, fecha_registro, pregunta_seguridad, rol) values ('" + nombre + "', '" + apellido + "', '" + username + "', '" + correo + "', '" + contraseña + "', '" + fecha_de_nacimiento + "', '" + fecha_de_registro + "', '" + pregunta_seguridad + "', '" + rol + "');"), conexion);
+                    comando.ExecuteNonQuery();
+                    conexion.Close();
+                    MessageBox.Show("Usuario registrado correctamente.");
+                    Form login = new LogIn();
+                    login.Show();
+                    this.Hide();
+                }
+                catch
+                {
+                    MessageBox.Show("Error");
+                }
+                #endregion
             }
             else
             {
                 MessageBox.Show("No coinciden las contraseñas. Intentar de nuevo");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form login = new LogIn();
+            login.Show();
+            this.Hide();
         }
 
         private void pictureBox4_MouseMove(object sender, MouseEventArgs e)

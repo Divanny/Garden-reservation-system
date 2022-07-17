@@ -178,6 +178,11 @@ namespace Proyecto_Final
             MessageBox.Show("La cita ha sido registrada exitosamente");
         }
 
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (m == 1)

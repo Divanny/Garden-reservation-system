@@ -12,9 +12,14 @@ namespace Proyecto_Final
 {
     public partial class Agregar_Jardines : Form
     {
-        public Agregar_Jardines()
+        int id;
+        string nombre, apellido;
+        public Agregar_Jardines(int ID, string Nombre, string Apellido)
         {
             InitializeComponent();
+            int id = ID;
+            string nombre = Nombre;
+            string apellido = Apellido;
 
             btn_Agregar.Enabled = true;
             btn_Foto.Enabled = false;
@@ -187,6 +192,33 @@ namespace Proyecto_Final
             dgv_jardines.ReadOnly = false;
 
             MessageBox.Show("El jardín ha sido agregado exitosamente");
+        }
+
+        private void pictureBox12_Click(object sender, EventArgs e)
+        {
+            Form administrador = new Administrador(id, nombre, apellido);
+            administrador.Show();
+            this.Hide();
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void pbx_Agregar_Foto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtp_Fecha_De_Apertura_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
