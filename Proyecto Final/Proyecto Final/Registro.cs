@@ -217,7 +217,7 @@ namespace Proyecto_Final
                 string pregunta_seguridad = tbx_Pregunta_De_Seguridad.Text;
                 string rol = "U";
 
-                #region Almacenamiento de voto
+                #region Almacenamiento de Usuario
                 try
                 {
                     MySqlConnection conexion = ObtenerConexion();
@@ -246,6 +246,11 @@ namespace Proyecto_Final
             Form login = new LogIn();
             login.Show();
             this.Hide();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void pictureBox4_MouseMove(object sender, MouseEventArgs e)

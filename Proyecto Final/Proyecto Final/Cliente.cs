@@ -61,7 +61,7 @@ namespace Proyecto_Final
 
         private void btn_Reservar_Click(object sender, EventArgs e)
         {
-            var reservar = new Hacer_Reserva();
+            var reservar = new Hacer_Reserva(id, nombre, apellido);
             reservar.Show();
             this.Hide();
         }
@@ -95,7 +95,7 @@ namespace Proyecto_Final
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var openReservaciones = new Ver_Reservaciones();
+            var openReservaciones = new Ver_Reservaciones(id, nombre, apellido);
             openReservaciones.Show();
             this.Hide();
         }

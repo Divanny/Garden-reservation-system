@@ -54,6 +54,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -61,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dtp_Fecha_De_Apertura
@@ -93,6 +95,7 @@
             // btn_Atras
             // 
             this.btn_Atras.BackColor = System.Drawing.Color.Green;
+            this.btn_Atras.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Atras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Atras.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Atras.ForeColor = System.Drawing.Color.White;
@@ -103,10 +106,12 @@
             this.btn_Atras.TabIndex = 36;
             this.btn_Atras.Text = "Anterior";
             this.btn_Atras.UseVisualStyleBackColor = false;
+            this.btn_Atras.Click += new System.EventHandler(this.btn_Atras_Click);
             // 
             // btn_Siguiente
             // 
             this.btn_Siguiente.BackColor = System.Drawing.Color.Green;
+            this.btn_Siguiente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Siguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Siguiente.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Siguiente.ForeColor = System.Drawing.Color.White;
@@ -117,10 +122,12 @@
             this.btn_Siguiente.TabIndex = 37;
             this.btn_Siguiente.Text = "Siguiente";
             this.btn_Siguiente.UseVisualStyleBackColor = false;
+            this.btn_Siguiente.Click += new System.EventHandler(this.btn_Siguiente_Click);
             // 
             // btn_Reservar
             // 
             this.btn_Reservar.BackColor = System.Drawing.Color.Green;
+            this.btn_Reservar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Reservar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Reservar.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Reservar.ForeColor = System.Drawing.Color.White;
@@ -131,6 +138,7 @@
             this.btn_Reservar.TabIndex = 38;
             this.btn_Reservar.Text = "Reservar";
             this.btn_Reservar.UseVisualStyleBackColor = false;
+            this.btn_Reservar.Click += new System.EventHandler(this.btn_Reservar_Click);
             // 
             // pictureBox3
             // 
@@ -162,6 +170,7 @@
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.White;
+            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox7.Image = global::Proyecto_Final.Properties.Resources.menos;
             this.pictureBox7.Location = new System.Drawing.Point(1336, 12);
             this.pictureBox7.Name = "pictureBox7";
@@ -174,6 +183,7 @@
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.White;
+            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox8.Image = global::Proyecto_Final.Properties.Resources.cerca;
             this.pictureBox8.Location = new System.Drawing.Point(1382, 12);
             this.pictureBox8.Name = "pictureBox8";
@@ -305,6 +315,7 @@
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(583, 358);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 53;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click_1);
@@ -320,6 +331,7 @@
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox12.TabIndex = 54;
             this.pictureBox12.TabStop = false;
+            this.pictureBox12.Click += new System.EventHandler(this.pictureBox12_Click);
             // 
             // pictureBox9
             // 
@@ -413,12 +425,22 @@
             this.label11.Text = "TITULO DEJ ARDIN";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(557, 742);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(817, 370);
+            this.dataGridView1.TabIndex = 63;
+            // 
             // Hacer_Reserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1446, 729);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -458,6 +480,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -489,5 +512,6 @@
         private Label label9;
         private Label label10;
         private Label label11;
+        private DataGridView dataGridView1;
     }
 }

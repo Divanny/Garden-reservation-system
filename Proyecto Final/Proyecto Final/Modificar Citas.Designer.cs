@@ -48,10 +48,9 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
             this.tbx_Nombre_Del_Jardin = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.btn_Guardar = new System.Windows.Forms.Button();
-            this.btn_Crear = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -146,12 +145,13 @@
             this.btn_Modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Modificar.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Modificar.ForeColor = System.Drawing.Color.Black;
-            this.btn_Modificar.Location = new System.Drawing.Point(16, 676);
+            this.btn_Modificar.Location = new System.Drawing.Point(12, 611);
             this.btn_Modificar.Name = "btn_Modificar";
-            this.btn_Modificar.Size = new System.Drawing.Size(166, 52);
+            this.btn_Modificar.Size = new System.Drawing.Size(251, 52);
             this.btn_Modificar.TabIndex = 69;
             this.btn_Modificar.Text = "Modificar";
             this.btn_Modificar.UseVisualStyleBackColor = false;
+            this.btn_Modificar.Click += new System.EventHandler(this.btn_Modificar_Click);
             // 
             // btn_Eliminar
             // 
@@ -159,9 +159,9 @@
             this.btn_Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Eliminar.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Eliminar.ForeColor = System.Drawing.Color.Black;
-            this.btn_Eliminar.Location = new System.Drawing.Point(201, 676);
+            this.btn_Eliminar.Location = new System.Drawing.Point(12, 676);
             this.btn_Eliminar.Name = "btn_Eliminar";
-            this.btn_Eliminar.Size = new System.Drawing.Size(166, 52);
+            this.btn_Eliminar.Size = new System.Drawing.Size(251, 52);
             this.btn_Eliminar.TabIndex = 70;
             this.btn_Eliminar.Text = "Eliminar";
             this.btn_Eliminar.UseVisualStyleBackColor = false;
@@ -172,9 +172,9 @@
             this.btn_Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Cancelar.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Cancelar.ForeColor = System.Drawing.Color.Black;
-            this.btn_Cancelar.Location = new System.Drawing.Point(393, 676);
+            this.btn_Cancelar.Location = new System.Drawing.Point(298, 676);
             this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(166, 52);
+            this.btn_Cancelar.Size = new System.Drawing.Size(261, 52);
             this.btn_Cancelar.TabIndex = 71;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = false;
@@ -368,6 +368,20 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(377, 34);
             this.dateTimePicker1.TabIndex = 75;
             // 
+            // tbx_Nombre_Del_Jardin
+            // 
+            this.tbx_Nombre_Del_Jardin.BackColor = System.Drawing.Color.Green;
+            this.tbx_Nombre_Del_Jardin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbx_Nombre_Del_Jardin.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbx_Nombre_Del_Jardin.ForeColor = System.Drawing.Color.White;
+            this.tbx_Nombre_Del_Jardin.Location = new System.Drawing.Point(19, 31);
+            this.tbx_Nombre_Del_Jardin.Name = "tbx_Nombre_Del_Jardin";
+            this.tbx_Nombre_Del_Jardin.Size = new System.Drawing.Size(453, 32);
+            this.tbx_Nombre_Del_Jardin.TabIndex = 72;
+            this.tbx_Nombre_Del_Jardin.Text = "Nombre del Jardin";
+            this.tbx_Nombre_Del_Jardin.Enter += new System.EventHandler(this.textBox2_Enter);
+            this.tbx_Nombre_Del_Jardin.Leave += new System.EventHandler(this.tbx_Nombre_Del_Jardin_Leave);
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -383,47 +397,19 @@
             this.label14.TabIndex = 73;
             this.label14.Text = "____________________________________________________";
             // 
-            // tbx_Nombre_Del_Jardin
-            // 
-            this.tbx_Nombre_Del_Jardin.BackColor = System.Drawing.Color.Green;
-            this.tbx_Nombre_Del_Jardin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbx_Nombre_Del_Jardin.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbx_Nombre_Del_Jardin.ForeColor = System.Drawing.Color.White;
-            this.tbx_Nombre_Del_Jardin.Location = new System.Drawing.Point(19, 31);
-            this.tbx_Nombre_Del_Jardin.Name = "tbx_Nombre_Del_Jardin";
-            this.tbx_Nombre_Del_Jardin.Size = new System.Drawing.Size(453, 32);
-            this.tbx_Nombre_Del_Jardin.TabIndex = 72;
-            this.tbx_Nombre_Del_Jardin.Text = "Nombre del Jardin";
-            this.tbx_Nombre_Del_Jardin.Enter += new System.EventHandler(this.textBox2_Enter);
-            this.tbx_Nombre_Del_Jardin.Leave += new System.EventHandler(this.tbx_Nombre_Del_Jardin_Leave);
-            // 
             // btn_Guardar
             // 
             this.btn_Guardar.BackColor = System.Drawing.Color.White;
             this.btn_Guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Guardar.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Guardar.ForeColor = System.Drawing.Color.Black;
-            this.btn_Guardar.Location = new System.Drawing.Point(298, 609);
+            this.btn_Guardar.Location = new System.Drawing.Point(298, 611);
             this.btn_Guardar.Name = "btn_Guardar";
             this.btn_Guardar.Size = new System.Drawing.Size(261, 52);
             this.btn_Guardar.TabIndex = 74;
             this.btn_Guardar.Text = "Guardar";
             this.btn_Guardar.UseVisualStyleBackColor = false;
             this.btn_Guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
-            // 
-            // btn_Crear
-            // 
-            this.btn_Crear.BackColor = System.Drawing.Color.White;
-            this.btn_Crear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Crear.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Crear.ForeColor = System.Drawing.Color.Black;
-            this.btn_Crear.Location = new System.Drawing.Point(16, 609);
-            this.btn_Crear.Name = "btn_Crear";
-            this.btn_Crear.Size = new System.Drawing.Size(264, 52);
-            this.btn_Crear.TabIndex = 73;
-            this.btn_Crear.Text = "Crear";
-            this.btn_Crear.UseVisualStyleBackColor = false;
-            this.btn_Crear.Click += new System.EventHandler(this.btn_Crear_Click);
             // 
             // pictureBox9
             // 
@@ -481,7 +467,6 @@
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.btn_Guardar);
-            this.Controls.Add(this.btn_Crear);
             this.Controls.Add(this.gbx_Panel_Modificar_Citas);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_Eliminar);
@@ -535,7 +520,6 @@
         private TextBox tbx_Nombre_Del_Jardin;
         private Label label13;
         private Button btn_Guardar;
-        private Button btn_Crear;
         private PictureBox pictureBox9;
         private PictureBox pictureBox12;
         private PictureBox pictureBox8;

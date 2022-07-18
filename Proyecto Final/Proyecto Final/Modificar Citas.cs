@@ -15,8 +15,6 @@ namespace Proyecto_Final
         public Modificar_Citas()
         {
             InitializeComponent();
-
-            btn_Crear.Enabled = true;
             btn_Guardar.Enabled = false;
             btn_Eliminar.Enabled = false;
             btn_Modificar.Enabled = false;
@@ -138,7 +136,6 @@ namespace Proyecto_Final
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
-            btn_Crear.Enabled = true;
             btn_Guardar.Enabled = false;
             btn_Eliminar.Enabled = true;
             btn_Modificar.Enabled = true;
@@ -152,7 +149,7 @@ namespace Proyecto_Final
 
         private void btn_Crear_Click(object sender, EventArgs e)
         {
-            btn_Crear.Enabled = false;
+            
             btn_Guardar.Enabled = true;
             btn_Eliminar.Enabled = true;
             btn_Modificar.Enabled = true;
@@ -165,7 +162,6 @@ namespace Proyecto_Final
 
         private void btn_Guardar_Click(object sender, EventArgs e)
         {
-            btn_Crear.Enabled = true;
             btn_Guardar.Enabled = false;
             btn_Eliminar.Enabled = true;
             btn_Modificar.Enabled = true;
@@ -181,6 +177,19 @@ namespace Proyecto_Final
         private void label13_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Modificar_Click(object sender, EventArgs e)
+        {
+            
+            btn_Guardar.Enabled = true;
+            btn_Eliminar.Enabled = true;
+            btn_Modificar.Enabled = true;
+            btn_Cancelar.Enabled = true;
+
+            gbx_Panel_Modificar_Citas.Enabled = true;
+            dgv_Disponibles.Enabled = true;
+            dgv_No_Disponibles.Enabled = true;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)

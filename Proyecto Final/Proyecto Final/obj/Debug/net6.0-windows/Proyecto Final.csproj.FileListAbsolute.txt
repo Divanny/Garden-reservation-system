@@ -156,7 +156,6 @@ D:\OneDrive - INTEC\Proyecto Final\Proyecto-Final-Desarrollo-de-Software-II\Proy
 D:\OneDrive - INTEC\Proyecto Final\Proyecto-Final-Desarrollo-de-Software-II\Proyecto Final\Proyecto Final\obj\Debug\net6.0-windows\Proyecto_Final.Olvidar_Contraseña.resources
 D:\OneDrive - INTEC\Proyecto Final\Proyecto-Final-Desarrollo-de-Software-II\Proyecto Final\Proyecto Final\obj\Debug\net6.0-windows\Proyecto_Final.Properties.Resources.resources
 D:\OneDrive - INTEC\Proyecto Final\Proyecto-Final-Desarrollo-de-Software-II\Proyecto Final\Proyecto Final\obj\Debug\net6.0-windows\Proyecto_Final.Registro.resources
-D:\OneDrive - INTEC\Proyecto Final\Proyecto-Final-Desarrollo-de-Software-II\Proyecto Final\Proyecto Final\obj\Debug\net6.0-windows\Proyecto_Final.Ver_Disponibilidad.resources
 D:\OneDrive - INTEC\Proyecto Final\Proyecto-Final-Desarrollo-de-Software-II\Proyecto Final\Proyecto Final\obj\Debug\net6.0-windows\Proyecto_Final.Ver_Reservaciones.resources
 D:\OneDrive - INTEC\Proyecto Final\Proyecto-Final-Desarrollo-de-Software-II\Proyecto Final\Proyecto Final\obj\Debug\net6.0-windows\Proyecto Final.csproj.GenerateResource.cache
 D:\OneDrive - INTEC\Proyecto Final\Proyecto-Final-Desarrollo-de-Software-II\Proyecto Final\Proyecto Final\obj\Debug\net6.0-windows\Proyecto Final.GeneratedMSBuildEditorConfig.editorconfig

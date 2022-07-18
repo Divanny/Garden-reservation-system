@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Proyecto_Final
 {
@@ -30,8 +31,35 @@ namespace Proyecto_Final
 
             gb_jardines.Enabled = false;
             dgv_jardines.ReadOnly = true;
+
+            try
+            {
+                MySqlConnection conexion = ObtenerConexion();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter("select * from jardines;", conexion))
+                {
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    dgv_jardines.DataSource = ds.Tables[0];
+                }
+                conexion.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Error al cargar datos de la base de datos.");
+            }
         }
         int m, mx, my;
+
+        #region Conexión Base de Datos
+        public static MySqlConnection ObtenerConexion()
+        {
+            MySqlConnection conectar = new MySqlConnection("server = 127.0.0.1; database = jardines; Uid = root; pwd = 1234;");
+            conectar.Open();
+            return conectar;
+        }
+        #endregion
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -110,7 +138,7 @@ namespace Proyecto_Final
 
         private void tbx_Longitud_Del_Jardin_Enter(object sender, EventArgs e)
         {
-            if (tbx_Longitud_Del_Jardin.Text == "Longitud del Jardin")
+            if (tbx_Longitud_Del_Jardin.Text == "Precio del Jardin")
             {
                 tbx_Longitud_Del_Jardin.Text = "";
                 tbx_Longitud_Del_Jardin.ForeColor = Color.White;
@@ -121,7 +149,7 @@ namespace Proyecto_Final
         {
             if (tbx_Longitud_Del_Jardin.Text == "")
             {
-                tbx_Longitud_Del_Jardin.Text = "Longitud del Jardin";
+                tbx_Longitud_Del_Jardin.Text = "Precio del Jardin";
                 tbx_Longitud_Del_Jardin.ForeColor = Color.White;
             }
         }
@@ -191,7 +219,7 @@ namespace Proyecto_Final
 
             dgv_jardines.ReadOnly = false;
 
-            MessageBox.Show("El jardín ha sido agregado exitosamente");
+            Guardar();
         }
 
         private void pictureBox12_Click(object sender, EventArgs e)
@@ -216,6 +244,24 @@ namespace Proyecto_Final
 
         }
 
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "Ubicación del Jardín")
+            {
+                textBox2.Text = "";
+                textBox2.ForeColor = Color.White;
+            }
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                textBox2.Text = "Ubicación del Jardín";
+                textBox2.ForeColor = Color.White;
+            }
+        }
+
         private void pictureBox8_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -229,9 +275,132 @@ namespace Proyecto_Final
             }
         }
 
+        private void textBox3_Enter(object sender, EventArgs e)
+        {
+            if (textBox3.Text == "Gama del Jardín:")
+            {
+                textBox3.Text = "";
+                textBox3.ForeColor = Color.White;
+            }
+        }
+
+        private void textBox3_Leave(object sender, EventArgs e)
+        {
+            if (textBox3.Text == "")
+            {
+                textBox3.Text = "Gama del Jardín:";
+                textBox3.ForeColor = Color.White;
+            }
+        }
+
+        private void btn_Foto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string imagen = openFileDialog1.FileName;
+                    pbx_Agregar_Foto.Image = Image.FromFile(imagen);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
+            }
+        }
+
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conexion = ObtenerConexion();
+            MySqlCommand comando = new MySqlCommand(String.Format("delete from jardines where id = {0};", dgv_jardines.CurrentRow.Index + 1), conexion);
+
+            comando.ExecuteNonQuery();
+            conexion.Close();
+            MessageBox.Show("Jardín guardado correctamente.");
+            Datos();
+        }
+
+        private void btn_Modificar_Click(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void dgv_jardines_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+         
+        }
+
+        private void dgv_jardines_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlConnection conexion = ObtenerConexion();
+                MySqlCommand comando = new MySqlCommand(String.Format("select * from jardines where id = {0};", dgv_jardines.Rows[dgv_jardines.CurrentRow.Index].Cells[0].Value.ToString()), conexion);
+                MySqlDataReader reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    tbx_Nombre_Del_Jardin.Text = Convert.ToString(reader["titulo_jardin"]);
+                    tbx_Descripcion_Del_Jardin.Text = Convert.ToString(reader["descripcion_jardin"]);
+                    tbx_Longitud_Del_Jardin.Text = Convert.ToString(reader["precio"]);
+                    textBox2.Text = Convert.ToString(reader["ubicacion"]);
+                    textBox3.Text = Convert.ToString(reader["gama"]);
+                    cbx_Maximo_De_Personas.Text = Convert.ToString(reader["maximo_de_personas"]);
+                    pbx_Agregar_Foto.Image = System.Drawing.Image.FromFile("D:/OneDrive - INTEC/Proyecto Final/Proyecto-Final-Desarrollo-de-Software-II/Proyecto Final/Proyecto Final/Fotos/" + Convert.ToString(reader["titulo_imagen"]));
+                }
+                conexion.Close();
+            }
+            catch
+            {
+            }
+        }
+
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             m = 0;
+        }
+
+        private void Datos()
+        {
+            try
+            {
+                MySqlConnection conexion = ObtenerConexion();
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter("select * from jardines;", conexion))
+                {
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    dgv_jardines.DataSource = ds.Tables[0];
+                }
+                conexion.Close();
+                }
+            catch
+            {
+                MessageBox.Show("Error al cargar datos de la base de datos.");
+            }
+        }
+        private void Guardar()
+        {
+            #region Almacenamiento de Jardin
+            try
+            {
+                pbx_Agregar_Foto.Tag = openFileDialog1.FileName;
+                string Imagen_Nombre = Path.GetFileName(pbx_Agregar_Foto.Tag.ToString());
+                MySqlConnection conexion = ObtenerConexion();
+                //MySqlCommand comando = new MySqlCommand(String.Format("insert into jardines (titulo_jardin, descripcion_jardin, precio, ubicacion, gama, maximo_de_personas, titulo_imagen) values ('"+ tbx_Nombre_Del_Jardin.Text +"', '"+ tbx_Descripcion_Del_Jardin.Text +"', '"+ tbx_Longitud_Del_Jardin +"', '"+ textBox2.Text +"', '"+ textBox3.Text +"', "+ Convert.ToInt32(cbx_Maximo_De_Personas.Text)+", '"+ Imagen_Nombre + "');"), conexion);
+                MySqlCommand comando = new MySqlCommand(String.Format("insert into jardines (titulo_jardin, descripcion_jardin, precio, ubicacion, gama, maximo_de_personas, titulo_imagen) values ('{0}', '{1}', '{2}', '{3}', '{4}', {5}, '{6}');", tbx_Nombre_Del_Jardin.Text, tbx_Descripcion_Del_Jardin.Text, tbx_Longitud_Del_Jardin.Text, textBox2.Text, textBox3.Text, Convert.ToInt32(cbx_Maximo_De_Personas.Text), Imagen_Nombre), conexion);
+
+                comando.ExecuteNonQuery();
+                conexion.Close();
+                MessageBox.Show("Jardín guardado correctamente.");
+                Datos();
+            }
+            catch
+            {
+                MessageBox.Show("Error");
+            }
+            #endregion
+
         }
     }
 }

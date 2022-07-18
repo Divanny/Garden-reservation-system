@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agregar_Jardines));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btn_Agregar = new System.Windows.Forms.Button();
@@ -36,27 +37,28 @@
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.dgv_jardines = new System.Windows.Forms.DataGridView();
             this.gb_jardines = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbx_Maximo_De_Personas = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pbx_Agregar_Foto = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dtp_Fecha_De_Apertura = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.tbx_Descripcion_Del_Jardin = new System.Windows.Forms.TextBox();
             this.tbx_Longitud_Del_Jardin = new System.Windows.Forms.TextBox();
             this.tbx_Nombre_Del_Jardin = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btn_Foto = new System.Windows.Forms.Button();
             this.btn_Guardar = new System.Windows.Forms.Button();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_jardines)).BeginInit();
@@ -119,6 +121,7 @@
             this.btn_Eliminar.TabIndex = 18;
             this.btn_Eliminar.Text = "Eliminar";
             this.btn_Eliminar.UseVisualStyleBackColor = false;
+            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
             // 
             // btn_Modificar
             // 
@@ -132,6 +135,7 @@
             this.btn_Modificar.TabIndex = 19;
             this.btn_Modificar.Text = "Modificar";
             this.btn_Modificar.UseVisualStyleBackColor = false;
+            this.btn_Modificar.Click += new System.EventHandler(this.btn_Modificar_Click);
             // 
             // btn_Cancelar
             // 
@@ -157,19 +161,21 @@
             this.dgv_jardines.RowTemplate.Height = 25;
             this.dgv_jardines.Size = new System.Drawing.Size(587, 634);
             this.dgv_jardines.TabIndex = 46;
+            this.dgv_jardines.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_jardines_CellClick);
+            this.dgv_jardines.Click += new System.EventHandler(this.dgv_jardines_Click);
             // 
             // gb_jardines
             // 
             this.gb_jardines.BackColor = System.Drawing.Color.Green;
+            this.gb_jardines.Controls.Add(this.label6);
+            this.gb_jardines.Controls.Add(this.textBox3);
             this.gb_jardines.Controls.Add(this.label7);
             this.gb_jardines.Controls.Add(this.textBox2);
             this.gb_jardines.Controls.Add(this.label3);
             this.gb_jardines.Controls.Add(this.cbx_Maximo_De_Personas);
             this.gb_jardines.Controls.Add(this.textBox1);
             this.gb_jardines.Controls.Add(this.pbx_Agregar_Foto);
-            this.gb_jardines.Controls.Add(this.label6);
             this.gb_jardines.Controls.Add(this.label5);
-            this.gb_jardines.Controls.Add(this.dtp_Fecha_De_Apertura);
             this.gb_jardines.Controls.Add(this.label2);
             this.gb_jardines.Controls.Add(this.tbx_Descripcion_Del_Jardin);
             this.gb_jardines.Controls.Add(this.tbx_Longitud_Del_Jardin);
@@ -184,6 +190,66 @@
             this.gb_jardines.TabIndex = 47;
             this.gb_jardines.TabStop = false;
             this.gb_jardines.Text = "Agregar Jardines";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Green;
+            this.label6.Enabled = false;
+            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label6.Location = new System.Drawing.Point(22, 334);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(423, 19);
+            this.label6.TabIndex = 64;
+            this.label6.Text = "______________________________________________";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.Green;
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox3.ForeColor = System.Drawing.Color.White;
+            this.textBox3.Location = new System.Drawing.Point(18, 299);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(400, 54);
+            this.textBox3.TabIndex = 63;
+            this.textBox3.Text = "Gama del Jardín:";
+            this.textBox3.Enter += new System.EventHandler(this.textBox3_Enter);
+            this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Green;
+            this.label7.Enabled = false;
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label7.Location = new System.Drawing.Point(17, 252);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(423, 19);
+            this.label7.TabIndex = 62;
+            this.label7.Text = "______________________________________________";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.Green;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.Location = new System.Drawing.Point(13, 217);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(400, 54);
+            this.textBox2.TabIndex = 61;
+            this.textBox2.Text = "Ubicación del Jardín";
+            this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
             // label3
             // 
@@ -235,21 +301,10 @@
             this.pbx_Agregar_Foto.Location = new System.Drawing.Point(468, 48);
             this.pbx_Agregar_Foto.Name = "pbx_Agregar_Foto";
             this.pbx_Agregar_Foto.Size = new System.Drawing.Size(266, 199);
+            this.pbx_Agregar_Foto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbx_Agregar_Foto.TabIndex = 56;
             this.pbx_Agregar_Foto.TabStop = false;
             this.pbx_Agregar_Foto.Click += new System.EventHandler(this.pbx_Agregar_Foto_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Green;
-            this.label6.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(16, 281);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(192, 31);
-            this.label6.TabIndex = 55;
-            this.label6.Text = "Fecha de Apertura";
             // 
             // label5
             // 
@@ -266,21 +321,6 @@
             this.label5.TabIndex = 54;
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dtp_Fecha_De_Apertura
-            // 
-            this.dtp_Fecha_De_Apertura.CalendarFont = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dtp_Fecha_De_Apertura.CalendarForeColor = System.Drawing.Color.White;
-            this.dtp_Fecha_De_Apertura.CalendarMonthBackground = System.Drawing.Color.Green;
-            this.dtp_Fecha_De_Apertura.CalendarTitleForeColor = System.Drawing.Color.White;
-            this.dtp_Fecha_De_Apertura.CalendarTrailingForeColor = System.Drawing.Color.Green;
-            this.dtp_Fecha_De_Apertura.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dtp_Fecha_De_Apertura.Location = new System.Drawing.Point(18, 319);
-            this.dtp_Fecha_De_Apertura.MinDate = new System.DateTime(2022, 7, 14, 0, 0, 0, 0);
-            this.dtp_Fecha_De_Apertura.Name = "dtp_Fecha_De_Apertura";
-            this.dtp_Fecha_De_Apertura.Size = new System.Drawing.Size(377, 34);
-            this.dtp_Fecha_De_Apertura.TabIndex = 53;
-            this.dtp_Fecha_De_Apertura.ValueChanged += new System.EventHandler(this.dtp_Fecha_De_Apertura_ValueChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -296,36 +336,6 @@
             this.label2.TabIndex = 51;
             this.label2.Text = "______________________________________________";
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Green;
-            this.label1.Enabled = false;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.label1.Location = new System.Drawing.Point(17, 121);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(423, 19);
-            this.label1.TabIndex = 50;
-            this.label1.Text = "______________________________________________";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Green;
-            this.label4.Enabled = false;
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.label4.Location = new System.Drawing.Point(15, 67);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(423, 19);
-            this.label4.TabIndex = 49;
-            this.label4.Text = "______________________________________________";
             // 
             // tbx_Descripcion_Del_Jardin
             // 
@@ -371,6 +381,36 @@
             this.tbx_Nombre_Del_Jardin.Enter += new System.EventHandler(this.tbx_Nombre_Del_Jardin_Enter_1);
             this.tbx_Nombre_Del_Jardin.Leave += new System.EventHandler(this.tbx_Nombre_Del_Jardin_Leave_1);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Green;
+            this.label4.Enabled = false;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label4.Location = new System.Drawing.Point(15, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(423, 19);
+            this.label4.TabIndex = 49;
+            this.label4.Text = "______________________________________________";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Green;
+            this.label1.Enabled = false;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.label1.Location = new System.Drawing.Point(17, 121);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(423, 19);
+            this.label1.TabIndex = 50;
+            this.label1.Text = "______________________________________________";
+            // 
             // btn_Foto
             // 
             this.btn_Foto.BackColor = System.Drawing.Color.White;
@@ -383,6 +423,7 @@
             this.btn_Foto.TabIndex = 59;
             this.btn_Foto.Text = "Agregar Foto";
             this.btn_Foto.UseVisualStyleBackColor = false;
+            this.btn_Foto.Click += new System.EventHandler(this.btn_Foto_Click);
             // 
             // btn_Guardar
             // 
@@ -414,6 +455,7 @@
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.White;
+            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox8.Image = global::Proyecto_Final.Properties.Resources.cerca;
             this.pictureBox8.Location = new System.Drawing.Point(1383, 12);
             this.pictureBox8.Name = "pictureBox8";
@@ -426,6 +468,7 @@
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.White;
+            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox7.Image = global::Proyecto_Final.Properties.Resources.menos;
             this.pictureBox7.Location = new System.Drawing.Point(1337, 12);
             this.pictureBox7.Name = "pictureBox7";
@@ -446,33 +489,9 @@
             this.pictureBox9.TabIndex = 64;
             this.pictureBox9.TabStop = false;
             // 
-            // label7
+            // openFileDialog1
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Green;
-            this.label7.Enabled = false;
-            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.label7.Location = new System.Drawing.Point(17, 252);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(423, 19);
-            this.label7.TabIndex = 62;
-            this.label7.Text = "______________________________________________";
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.Green;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(13, 217);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(400, 54);
-            this.textBox2.TabIndex = 61;
-            this.textBox2.Text = "Ubicación del Jardín";
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Agregar_Jardines
             // 
@@ -494,7 +513,9 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Agregar_Jardines";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar_Jardines";
             this.Load += new System.EventHandler(this.Agregar_Jardines_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -522,9 +543,7 @@
         private DataGridView dgv_jardines;
         private GroupBox gb_jardines;
         private PictureBox pbx_Agregar_Foto;
-        private Label label6;
         private Label label5;
-        private DateTimePicker dtp_Fecha_De_Apertura;
         private Label label2;
         private Label label1;
         private Label label4;
@@ -542,5 +561,8 @@
         private PictureBox pictureBox9;
         private Label label7;
         private TextBox textBox2;
+        private Label label6;
+        private TextBox textBox3;
+        private OpenFileDialog openFileDialog1;
     }
 }
