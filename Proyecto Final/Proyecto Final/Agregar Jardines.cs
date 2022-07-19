@@ -320,7 +320,7 @@ namespace Proyecto_Final
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
             MySqlConnection conexion = ObtenerConexion();
-            MySqlCommand comando = new MySqlCommand(String.Format("truncate from jardines where id = {0};", dgv_jardines.Rows[dgv_jardines.CurrentRow.Index].Cells[0].Value.ToString()), conexion);
+            MySqlCommand comando = new MySqlCommand(String.Format("delete from jardines where id = {0};", dgv_jardines.Rows[dgv_jardines.CurrentRow.Index].Cells[0].Value.ToString()), conexion);
 
             comando.ExecuteNonQuery();
             MessageBox.Show("Jardín eliminado correctamente.");

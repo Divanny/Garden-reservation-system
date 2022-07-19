@@ -95,7 +95,6 @@
             this.pictureBox3.Size = new System.Drawing.Size(495, 608);
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox4
             // 
@@ -222,7 +221,6 @@
             this.tbx_Pregunta_De_Seguridad.Size = new System.Drawing.Size(348, 27);
             this.tbx_Pregunta_De_Seguridad.TabIndex = 18;
             this.tbx_Pregunta_De_Seguridad.Text = "¿Cómo apodarías a tu mascota?";
-            this.tbx_Pregunta_De_Seguridad.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             this.tbx_Pregunta_De_Seguridad.Enter += new System.EventHandler(this.tbx_Pregunta_De_Seguridad_Enter);
             this.tbx_Pregunta_De_Seguridad.Leave += new System.EventHandler(this.tbx_Pregunta_De_Seguridad_Leave);
             // 

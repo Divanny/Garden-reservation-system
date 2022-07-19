@@ -74,7 +74,7 @@
             this.dtp_Fecha_De_Apertura.CalendarTrailingForeColor = System.Drawing.Color.Green;
             this.dtp_Fecha_De_Apertura.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dtp_Fecha_De_Apertura.Location = new System.Drawing.Point(54, 387);
-            this.dtp_Fecha_De_Apertura.MinDate = new System.DateTime(2022, 7, 14, 0, 0, 0, 0);
+            this.dtp_Fecha_De_Apertura.MinDate = new System.DateTime(2022, 7, 18, 0, 0, 0, 0);
             this.dtp_Fecha_De_Apertura.Name = "dtp_Fecha_De_Apertura";
             this.dtp_Fecha_De_Apertura.Size = new System.Drawing.Size(377, 34);
             this.dtp_Fecha_De_Apertura.TabIndex = 33;
