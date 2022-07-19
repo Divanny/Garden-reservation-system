@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-//using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 
 namespace Proyecto_Final
 {
@@ -21,14 +21,14 @@ namespace Proyecto_Final
             InitializeComponent();
         }
 
-        //#region Conexión Base de Datos
-        //public static MySqlConnection ObtenerConexion()
-        //{
-        //    MySqlConnection conectar = new MySqlConnection("server = 127.0.0.1; database = jardines; Uid = root; pwd = 1234;");
-        //    conectar.Open();
-        //    return conectar;
-        //}
-        //#endregion
+        #region Conexión Base de Datos
+        public static MySqlConnection ObtenerConexion()
+        {
+            MySqlConnection conectar = new MySqlConnection("server = 127.0.0.1; database = jardines; Uid = root; pwd = 1234;");
+            conectar.Open();
+            return conectar;
+        }
+        #endregion
 
         private void Btn_Acceder_Paint(object sender, PaintEventArgs e)
         {
@@ -55,23 +55,23 @@ namespace Proyecto_Final
         {
             if (tbx_Contraseña.Text == textBox1.Text)
             {
-                //#region Cambio de contraseña
-                //try
-                //{
-                //    MySqlConnection conexion = ObtenerConexion();
-                //    MySqlCommand comando = new MySqlCommand(String.Format("update usuario set contraseña = '" + tbx_Contraseña.Text + "' where username = '" + tbx_Usuario.Text + "' and pregunta_seguridad = '" + textBox2.Text + "';"), conexion);
-                //    comando.ExecuteNonQuery();
-                //    conexion.Close();
-                //    MessageBox.Show("Contraseña actualizada correctamente.");
-                //    Form login = new LogIn();
-                //    login.Show();
-                //    this.Hide();
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Error al cambiar la contraseña. Revise las credenciales.");
-                //}
-                //#endregion
+                #region Cambio de contraseña
+                try
+                {
+                    MySqlConnection conexion = ObtenerConexion();
+                    MySqlCommand comando = new MySqlCommand(String.Format("update usuario set contraseña = '" + tbx_Contraseña.Text + "' where username = '" + tbx_Usuario.Text + "' and pregunta_seguridad = '" + textBox2.Text + "';"), conexion);
+                    comando.ExecuteNonQuery();
+                    conexion.Close();
+                    MessageBox.Show("Contraseña actualizada correctamente.");
+                    Form login = new LogIn();
+                    login.Show();
+                    this.Hide();
+                }
+                catch
+                {
+                    MessageBox.Show("Error al cambiar la contraseña. Revise las credenciales.");
+                }
+                #endregion
             }
             else
             {

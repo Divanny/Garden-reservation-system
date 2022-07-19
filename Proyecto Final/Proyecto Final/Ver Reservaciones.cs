@@ -13,7 +13,7 @@ namespace Proyecto_Final
 {
     public partial class Ver_Reservaciones : Form
     {
-        int ID_Jardin = 1;
+        int ID_Jardin = 0;
         int id;
         string nombre, apellido;
 
@@ -26,11 +26,8 @@ namespace Proyecto_Final
             public string Fecha_Reserva { get; set; }
             public int Cantidad_Personas { get; set; }
             public string Hora_Inicio { get; set; }
-
             public string Hora_Cierre { get; set; }
             public string Imagen { get; set; }
-
-
         }
 
         #region Conexión Base de Datos
@@ -45,8 +42,6 @@ namespace Proyecto_Final
         int max = 0;
         public Ver_Reservaciones(int ID, string Nombre, string Apellido)
         {
-
-            
             InitializeComponent();
             id = ID;
             nombre = Nombre;
@@ -57,7 +52,7 @@ namespace Proyecto_Final
             try
             {
                 MySqlConnection conexion = ObtenerConexion();
-                MySqlCommand comando = new MySqlCommand(String.Format("select titulo_jardin, descripcion_jardin, precio, ubicacion, fecha_reserva, cantidad_personas, hora_inicio, hora_cierre, titulo_imagen from jardines join reservas on jardines.id = reservas.id_jardines and reservas.id_usuario = 4;"), conexion);
+                MySqlCommand comando = new MySqlCommand(String.Format("select titulo_jardin, descripcion_jardin, precio, ubicacion, fecha_reserva, cantidad_personas, hora_inicio, hora_cierre, titulo_imagen from jardines join reservas on jardines.id = reservas.id_jardines and reservas.id_usuario = {0};", id), conexion);
                 MySqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -76,9 +71,8 @@ namespace Proyecto_Final
                     });
                     max++;
                 }
-
                 conexion.Close();
-                var reservas = items.ElementAt(ID_Jardin - 1);
+                var reservas = items.ElementAt(0);
                 label12.Text = reservas.Titulo.ToString();
                 label2.Text = reservas.Precio.ToString();
                 label4.Text = reservas.Descripcion.ToString();
@@ -129,7 +123,7 @@ namespace Proyecto_Final
 
         private void btn_Siguiente_Click(object sender, EventArgs e)
         {
-            if (ID_Jardin == max)
+            if (ID_Jardin == max - 1)
             {
                 MessageBox.Show("No posee más reservas.");
             }
@@ -141,7 +135,7 @@ namespace Proyecto_Final
                 try
                 {
                     MySqlConnection conexion = ObtenerConexion();
-                    MySqlCommand comando = new MySqlCommand(String.Format("select titulo_jardin, descripcion_jardin, precio, ubicacion, fecha_reserva, cantidad_personas, hora_inicio, hora_cierre, titulo_imagen from jardines join reservas on jardines.id = reservas.id_jardines and reservas.id_usuario = 4;"), conexion);
+                    MySqlCommand comando = new MySqlCommand(String.Format("select titulo_jardin, descripcion_jardin, precio, ubicacion, fecha_reserva, cantidad_personas, hora_inicio, hora_cierre, titulo_imagen from jardines join reservas on jardines.id = reservas.id_jardines and reservas.id_usuario = {0};", id), conexion);
                     MySqlDataReader reader = comando.ExecuteReader();
 
                     while (reader.Read())
@@ -161,7 +155,7 @@ namespace Proyecto_Final
                     }
 
                     conexion.Close();
-                    var reservas = items.ElementAt(ID_Jardin - 1);
+                    var reservas = items.ElementAt(ID_Jardin);
                     label12.Text = reservas.Titulo.ToString();
                     label2.Text = reservas.Precio.ToString();
                     label4.Text = reservas.Descripcion.ToString();
@@ -181,7 +175,7 @@ namespace Proyecto_Final
 
         private void btn_Atras_Click(object sender, EventArgs e)
         {
-            if (ID_Jardin == 1)
+            if (ID_Jardin == 0)
             {
                 MessageBox.Show("No posee más reservas.");
             }
@@ -193,7 +187,7 @@ namespace Proyecto_Final
                 try
                 {
                     MySqlConnection conexion = ObtenerConexion();
-                    MySqlCommand comando = new MySqlCommand(String.Format("select titulo_jardin, descripcion_jardin, precio, ubicacion, fecha_reserva, cantidad_personas, hora_inicio, hora_cierre, titulo_imagen from jardines join reservas on jardines.id = reservas.id_jardines and reservas.id_usuario = 4;"), conexion);
+                    MySqlCommand comando = new MySqlCommand(String.Format("select titulo_jardin, descripcion_jardin, precio, ubicacion, fecha_reserva, cantidad_personas, hora_inicio, hora_cierre, titulo_imagen from jardines join reservas on jardines.id = reservas.id_jardines and reservas.id_usuario = {0};", id), conexion);
                     MySqlDataReader reader = comando.ExecuteReader();
 
                     while (reader.Read())
@@ -213,7 +207,7 @@ namespace Proyecto_Final
                     }
 
                     conexion.Close();
-                    var reservas = items.ElementAt(ID_Jardin - 1);
+                    var reservas = items.ElementAt(ID_Jardin);
                     label12.Text = reservas.Titulo.ToString();
                     label2.Text = reservas.Precio.ToString();
                     label4.Text = reservas.Descripcion.ToString();
@@ -236,6 +230,11 @@ namespace Proyecto_Final
             Form cliente = new Reservar(id, nombre, apellido);
             cliente.Show();
             this.Hide();
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void pictureBox3_MouseUp(object sender, MouseEventArgs e)

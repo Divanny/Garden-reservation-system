@@ -63,8 +63,9 @@ namespace Proyecto_Final
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var openModificarCitas = new Modificar_Citas();
+            var openModificarCitas = new Modificar_Citas(id, nombre, apellido);
             openModificarCitas.Show();
+            this.Hide();
         }
 
         private void label1_Click(object sender, EventArgs e)

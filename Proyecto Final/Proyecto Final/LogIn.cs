@@ -118,17 +118,24 @@ namespace Proyecto_Final
                     Length++;
                 }
                 conexion.Close();
-                if (Rol == "A")
+                if (Username == tbx_Usuario.Text && tbx_Contraseña.Text == Contraseña)
                 {
-                    var admintest = new Administrador(ID, Nombre, Apellido);
-                    admintest.Show();
-                    this.Hide();
+                    if (Rol == "A")
+                    {
+                        var admintest = new Administrador(ID, Nombre, Apellido);
+                        admintest.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        var cliente = new Reservar(ID, Nombre, Apellido);
+                        cliente.Show();
+                        this.Hide();
+                    }
                 }
                 else
                 {
-                    var cliente = new Reservar(ID, Nombre, Apellido);
-                    cliente.Show();
-                    this.Hide();
+                    MessageBox.Show("Usuario y/o contraseña inválidos.");
                 }
 
             }

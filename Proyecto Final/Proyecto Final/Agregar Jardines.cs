@@ -15,6 +15,8 @@ namespace Proyecto_Final
     {
         int id;
         string nombre, apellido;
+        bool check, checkImage = false;
+
         public Agregar_Jardines(int ID, string Nombre, string Apellido)
         {
             InitializeComponent();
@@ -26,8 +28,8 @@ namespace Proyecto_Final
             btn_Foto.Enabled = false;
             btn_Guardar.Enabled = false;
             btn_Eliminar.Enabled = false;
-            btn_Modificar.Enabled = false;
-            btn_Cancelar.Enabled = false;
+            btn_Modificar.Enabled = true;
+            btn_Cancelar.Enabled = true;
 
             gb_jardines.Enabled = false;
             dgv_jardines.ReadOnly = true;
@@ -189,7 +191,7 @@ namespace Proyecto_Final
             btn_Guardar.Enabled = false;
             btn_Eliminar.Enabled = true;
             btn_Modificar.Enabled = true;
-            btn_Cancelar.Enabled = false;
+            btn_Cancelar.Enabled = true;
 
             gb_jardines.Enabled = false;
 
@@ -201,11 +203,13 @@ namespace Proyecto_Final
             btn_Foto.Enabled = true;
             btn_Guardar.Enabled = true;
             btn_Eliminar.Enabled = true;
-            btn_Modificar.Enabled = true;
+            btn_Modificar.Enabled = false;
             btn_Cancelar.Enabled = true;
 
             gb_jardines.Enabled = true;
             dgv_jardines.ReadOnly = false;
+
+            check = true;
         }
 
         private void btn_Guardar_Click(object sender, EventArgs e)
@@ -215,11 +219,14 @@ namespace Proyecto_Final
             btn_Guardar.Enabled = false;
             btn_Eliminar.Enabled = true;
             btn_Modificar.Enabled = true;
-            btn_Cancelar.Enabled = false;
+            btn_Cancelar.Enabled = true;
 
             dgv_jardines.ReadOnly = false;
 
             Guardar();
+            Form reiniciar = new Agregar_Jardines(id, nombre, apellido);
+            reiniciar.Show();
+            this.Hide();
         }
 
         private void pictureBox12_Click(object sender, EventArgs e)
@@ -302,6 +309,7 @@ namespace Proyecto_Final
                     string imagen = openFileDialog1.FileName;
                     pbx_Agregar_Foto.Image = Image.FromFile(imagen);
                 }
+                checkImage = true;
             }
             catch (Exception ex)
             {
@@ -312,18 +320,32 @@ namespace Proyecto_Final
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
             MySqlConnection conexion = ObtenerConexion();
-            MySqlCommand comando = new MySqlCommand(String.Format("delete from jardines where id = {0};", dgv_jardines.CurrentRow.Index + 1), conexion);
+            MySqlCommand comando = new MySqlCommand(String.Format("truncate from jardines where id = {0};", dgv_jardines.Rows[dgv_jardines.CurrentRow.Index].Cells[0].Value.ToString()), conexion);
 
             comando.ExecuteNonQuery();
+            MessageBox.Show("Jardín eliminado correctamente.");
             conexion.Close();
-            MessageBox.Show("Jardín guardado correctamente.");
             Datos();
+            conexion.Close();
+
+            Form reiniciar = new Agregar_Jardines(id, nombre, apellido);
+            reiniciar.Show();
+            this.Hide();
         }
 
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
-            
+            btn_Agregar.Enabled = false;
+            btn_Foto.Enabled = true;
+            btn_Guardar.Enabled = true;
+            btn_Eliminar.Enabled = true;
+            btn_Modificar.Enabled = false;
+            btn_Cancelar.Enabled = true;
 
+            gb_jardines.Enabled = true;
+            dgv_jardines.ReadOnly = false;
+
+            check = false;
         }
 
         private void dgv_jardines_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -386,9 +408,26 @@ namespace Proyecto_Final
             {
                 pbx_Agregar_Foto.Tag = openFileDialog1.FileName;
                 string Imagen_Nombre = Path.GetFileName(pbx_Agregar_Foto.Tag.ToString());
+
                 MySqlConnection conexion = ObtenerConexion();
-                //MySqlCommand comando = new MySqlCommand(String.Format("insert into jardines (titulo_jardin, descripcion_jardin, precio, ubicacion, gama, maximo_de_personas, titulo_imagen) values ('"+ tbx_Nombre_Del_Jardin.Text +"', '"+ tbx_Descripcion_Del_Jardin.Text +"', '"+ tbx_Longitud_Del_Jardin +"', '"+ textBox2.Text +"', '"+ textBox3.Text +"', "+ Convert.ToInt32(cbx_Maximo_De_Personas.Text)+", '"+ Imagen_Nombre + "');"), conexion);
-                MySqlCommand comando = new MySqlCommand(String.Format("insert into jardines (titulo_jardin, descripcion_jardin, precio, ubicacion, gama, maximo_de_personas, titulo_imagen) values ('{0}', '{1}', '{2}', '{3}', '{4}', {5}, '{6}');", tbx_Nombre_Del_Jardin.Text, tbx_Descripcion_Del_Jardin.Text, tbx_Longitud_Del_Jardin.Text, textBox2.Text, textBox3.Text, Convert.ToInt32(cbx_Maximo_De_Personas.Text), Imagen_Nombre), conexion);
+                MySqlCommand comando;
+
+                if (check == true)
+                {
+                    comando = new MySqlCommand(String.Format("insert into jardines (titulo_jardin, descripcion_jardin, precio, ubicacion, gama, maximo_de_personas, titulo_imagen) values ('{0}', '{1}', '{2}', '{3}', '{4}', {5}, '{6}');", tbx_Nombre_Del_Jardin.Text, tbx_Descripcion_Del_Jardin.Text, tbx_Longitud_Del_Jardin.Text, textBox2.Text, textBox3.Text, Convert.ToInt32(cbx_Maximo_De_Personas.Text), Imagen_Nombre), conexion);
+                }
+
+                else
+                {
+                    if (checkImage == true)
+                    {
+                        comando = new MySqlCommand(String.Format("update jardines set titulo_jardin = '{0}', descripcion_jardin = '{1}', precio = '{2}', ubicacion = '{3}', gama = '{4}', maximo_de_personas = {5}, titulo_imagen = '{6}' where id = {7};", tbx_Nombre_Del_Jardin.Text, tbx_Descripcion_Del_Jardin.Text, tbx_Longitud_Del_Jardin.Text, textBox2.Text, textBox3.Text, Convert.ToInt32(cbx_Maximo_De_Personas.Text), Imagen_Nombre, dgv_jardines.Rows[dgv_jardines.CurrentRow.Index].Cells[0].Value.ToString()), conexion);
+                    }
+                    else
+                    {
+                        comando = new MySqlCommand(String.Format("update jardines set titulo_jardin = '{0}', descripcion_jardin = '{1}', precio = '{2}', ubicacion = '{3}', gama = '{4}', maximo_de_personas = {5} where id = {6};", tbx_Nombre_Del_Jardin.Text, tbx_Descripcion_Del_Jardin.Text, tbx_Longitud_Del_Jardin.Text, textBox2.Text, textBox3.Text, Convert.ToInt32(cbx_Maximo_De_Personas.Text), dgv_jardines.Rows[dgv_jardines.CurrentRow.Index].Cells[0].Value.ToString()), conexion);
+                    }
+                }
 
                 comando.ExecuteNonQuery();
                 conexion.Close();

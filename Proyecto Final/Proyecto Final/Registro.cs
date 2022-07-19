@@ -115,6 +115,7 @@ namespace Proyecto_Final
             {
                 tbx_Contraseña.Text = "";
                 tbx_Contraseña.ForeColor = Color.Black;
+                tbx_Contraseña.UseSystemPasswordChar = true;
 
             }
         }
@@ -125,7 +126,7 @@ namespace Proyecto_Final
             {
                 tbx_Contraseña.Text = "Contraseña";
                 tbx_Contraseña.ForeColor = Color.Black;
-
+                tbx_Contraseña.UseSystemPasswordChar = false;
             }
         }
 
@@ -135,6 +136,7 @@ namespace Proyecto_Final
             {
                 tbx_Confirmar_Contraseña.Text = "";
                 tbx_Confirmar_Contraseña.ForeColor = Color.Black;
+                tbx_Confirmar_Contraseña.UseSystemPasswordChar = true;
 
             }
         }
@@ -144,6 +146,7 @@ namespace Proyecto_Final
             {
                 tbx_Confirmar_Contraseña.Text = "Confirmar Contraseña";
                 tbx_Confirmar_Contraseña.ForeColor = Color.Black;
+                tbx_Confirmar_Contraseña.UseSystemPasswordChar = false;
 
             }
         }

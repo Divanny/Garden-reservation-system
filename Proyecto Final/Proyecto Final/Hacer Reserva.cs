@@ -18,6 +18,7 @@ namespace Proyecto_Final
         int ID_Jardin = 1;
         int id;
         string nombre, apellido;
+        int ID_JARDIN_ACTUAL = 0;
 
         class Jardin
         {
@@ -63,6 +64,7 @@ namespace Proyecto_Final
                 }
                 conexion.Close();
                 var jardin = items.ElementAt(ID_Jardin - 1);
+                ID_JARDIN_ACTUAL = jardin.ID;
                 label11.Text = jardin.Titulo.ToString();
                 label2.Text = jardin.Precio.ToString();
                 label4.Text = jardin.Descripcion.ToString();
@@ -276,6 +278,7 @@ namespace Proyecto_Final
                     }
                     conexion.Close();
                     var jardin = items.ElementAt(ID_Jardin - 1);
+                    ID_JARDIN_ACTUAL = jardin.ID;
                     label11.Text = jardin.Titulo.ToString();
                     label2.Text = jardin.Precio.ToString();
                     label4.Text = jardin.Descripcion.ToString();
@@ -326,6 +329,7 @@ namespace Proyecto_Final
                     ID_Jardin++;
 
                     var jardin = items.ElementAt(ID_Jardin - 1);
+                    ID_JARDIN_ACTUAL = jardin.ID;
                     label11.Text = jardin.Titulo.ToString();
                     label2.Text = jardin.Precio.ToString();
                     label4.Text = jardin.Descripcion.ToString();
@@ -342,32 +346,49 @@ namespace Proyecto_Final
 
         private void btn_Reservar_Click(object sender, EventArgs e)
         {
-            
-
             string año = (dtp_Fecha_De_Apertura.Value.Year).ToString();
             string mes = (dtp_Fecha_De_Apertura.Value.Month).ToString();
             string dia = (dtp_Fecha_De_Apertura.Value.Day).ToString();
+            string fecha = año + "-" + mes + "-" + dia;
 
-            MessageBox.Show(año + "-" + mes + "-" + dia);
             #region Almacenamiento de Reserva
-            try
+            MySqlConnection conexion = ObtenerConexion();
+            MySqlCommand comando = new MySqlCommand(String.Format("select count(id) from reservas where fecha_reserva = '{0}' and id_jardines = {1};", fecha, ID_JARDIN_ACTUAL), conexion);
+            MySqlDataReader reader = comando.ExecuteReader();
+            int cantidad = 0;
+            while (reader.Read())
             {
-                MySqlConnection conexion = ObtenerConexion();
-                MySqlCommand comando = new MySqlCommand(String.Format("insert into reservas (id_usuario, id_jardines, fecha_reserva, cantidad_personas, hora_inicio, hora_cierre) values (" + id + ", " + ID_Jardin + ", '"+ año + "-"+ mes + "-" + dia + "', " + Convert.ToInt32(cbx_Cantidad_De_Personas.Text) + ", '"+ cbx_Hora_De_Inicio.Text +"', '" + cbx_Hora_De_Cierre.Text + "' );"), conexion);
-                comando.ExecuteNonQuery();
-                conexion.Close();
-                MessageBox.Show("Reserva registrada correctamente.");
-
-                Form cliente = new Reservar(id, nombre, apellido);
-                cliente.Show();
-                this.Hide();
+                cantidad = Convert.ToInt32(reader["count(id)"]);
             }
-            catch
+            conexion.Close();
+
+            if (cantidad > 0)
             {
-                MessageBox.Show("Error al registrar reserva.");
+                MessageBox.Show("Jardin reservado el día seleccionado.");
+            }
+            else
+            {
+                try
+                {
+                    conexion = ObtenerConexion();
+                    comando = new MySqlCommand(String.Format("insert into reservas (id_usuario, id_jardines, fecha_reserva, cantidad_personas, hora_inicio, hora_cierre) values (" + id + ", " + ID_JARDIN_ACTUAL + ", '" + año + "-" + mes + "-" + dia + "', " + Convert.ToInt32(cbx_Cantidad_De_Personas.Text) + ", '" + cbx_Hora_De_Inicio.Text + "', '" + cbx_Hora_De_Cierre.Text + "' );"), conexion);
+                    comando.ExecuteNonQuery();
+                    conexion.Close();
+                    MessageBox.Show("Reserva registrada correctamente.");
+
+                    Form cliente = new Reservar(id, nombre, apellido);
+                    cliente.Show();
+                    this.Hide();
+                }
+                catch
+                {
+                    MessageBox.Show("Error al registrar reserva.");
+                }
             }
             #endregion
         }
+                
+            
 
 
         private void pictureBox12_Click(object sender, EventArgs e)
